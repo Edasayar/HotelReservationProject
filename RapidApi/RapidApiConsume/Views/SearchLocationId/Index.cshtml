@@ -1,0 +1,52 @@
+﻿@model List<BookingApiLocationSearchViewModel.Datum>
+
+@{
+    Layout = null;
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br /> 
+    @using (Html.BeginForm("Index", "SearchLocationId", FormMethod.Post))
+    {
+        <label> Şehir Adı giriniz</label>
+        <input type="text" class="form-control" name="cityName" />
+        <br />
+        <button class="btn btn-primary">Şehir için Id bul</button>
+    }
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>destId</th>
+                <th>Region</th>
+                <th>Hotels</th>
+                <th>City UFI</th>
+                <th>City Name</th>
+                <th>Country</th>
+                <th>Image URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model)
+            {
+                <tr>
+                    <td>@hotel.dest_id</td>
+                    <td>@hotel.region</td>
+                    <td>@hotel.hotels</td>
+                    <td>@hotel.city_ufi</td>
+                    <td>@hotel.city_name</td>
+                    <td>@hotel.country</td>
+                    <td>@hotel.image_url</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href ="/BookingByCity/Index/" class="btn btn-dark"> Yeni Otel Rezervasyon Bilgisi</a>
+</div>

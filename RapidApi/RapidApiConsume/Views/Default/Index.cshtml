@@ -1,0 +1,36 @@
+﻿@model ExchangeRatesResponse
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Destinations</title>
+</head>
+<body>
+    <h1>Flight Destinations</h1>
+
+    @if (Model != null && Model.data != null)
+    {
+        @foreach (var destination in Model.data)
+        {
+            <h2>@destination.name</h2>
+            <ul>
+                @if (destination.children != null)
+                {
+                    @foreach (var child in destination.children)
+                    {
+                        <li>
+                            <strong>@child.name</strong> - @child.shortName (@child.airportCode)
+                            <p>Coordinates: @child.coords</p>
+                            <p><a href="@child.url">More info</a></p>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    }
+    else
+    {
+        <p>No data available.</p>
+    }
+</body>
+</html>

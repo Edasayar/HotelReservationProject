@@ -1,0 +1,38 @@
+﻿@model BookingApiVM
+
+@{
+    Layout = null;
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />  <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Hotel Name</th>
+                <th>Review Score</th>
+                <th>Country Code</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model.data.hotels)
+            {
+                <tr>
+                    <td>@hotel.hotel_id</td>
+                    <td>@hotel.property.name</td>
+                    <td>@hotel.property.reviewScore</td>
+                    <td>@hotel.property.countryCode</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,93 @@
+﻿@model WeatherViewModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Information - @Model.Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .weather-info h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Information - @Model.Name</h1>
+
+        <div class="weather-info">
+            <h2>Coordinates</h2>
+            <p>Longitude: @Model.Coord.Lon</p>
+            <p>Latitude: @Model.Coord.Lat</p>
+        </div>
+
+        <div class="weather-info">
+            <h2>Current Weather</h2>
+            <p>Main: @Model.Weather[0].Main</p>
+            <p>Description: @Model.Weather[0].Description</p>
+            <p>Temperature: @Model.Main.Temp °C</p>
+            <p>Feels Like: @Model.Main.Feels_like °C</p>
+            <p>Min Temperature: @Model.Main.Temp_min °C</p>
+            <p>Max Temperature: @Model.Main.Temp_max °C</p>
+            <p>Pressure: @Model.Main.Pressure hPa</p>
+            <p>Humidity: @Model.Main.Humidity %</p>
+        </div>
+
+        <div class="weather-info">
+            <h2>Wind Information</h2>
+            <p>Speed: @Model.Wind.Speed m/s</p>
+            <p>Direction: @Model.Wind.Deg °</p>
+        </div>
+
+        <div class="weather-info">
+            <h2>Cloudiness</h2>
+            <p>All: @Model.Clouds.All %</p>
+        </div>
+
+        <div class="weather-info">
+            <h2>Visibility</h2>
+            <p>@Model.Visibility meters</p>
+        </div>
+
+        <div class="weather-info">
+            <h2>Sunrise and Sunset</h2>
+            <p>Sunrise: @DateTimeOffset.FromUnixTimeSeconds(Model.Sys.Sunrise).ToLocalTime()</p>
+            <p>Sunset: @DateTimeOffset.FromUnixTimeSeconds(Model.Sys.Sunset).ToLocalTime()</p>
+        </div>
+    </div>
+</body>
+</html>
