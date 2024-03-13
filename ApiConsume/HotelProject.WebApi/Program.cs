@@ -31,6 +31,9 @@ builder.Services.AddScoped<IBookingDal, EfBookingDal>();
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
 
+builder.Services.AddScoped<IGuestService, GuestService>();
+builder.Services.AddScoped<IGuestDal, EfGuestDal>();
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddCors(opt=>

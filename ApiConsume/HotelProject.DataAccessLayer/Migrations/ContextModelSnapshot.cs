@@ -266,7 +266,12 @@ namespace HotelProject.DataAccessLayer.Migrations
 
                     b.HasKey("GuestId");
 
-                    b.ToTable("Guests");
+                    b.ToTable("Guests", null, t =>
+                        {
+                            t.HasTrigger("GuestDecrease");
+
+                            t.HasTrigger("GuestIncrease");
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Room", b =>
@@ -310,7 +315,12 @@ namespace HotelProject.DataAccessLayer.Migrations
 
                     b.HasKey("RoomId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", null, t =>
+                        {
+                            t.HasTrigger("RoomDecrease");
+
+                            t.HasTrigger("RoomIncrease");
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Service", b =>
@@ -368,7 +378,12 @@ namespace HotelProject.DataAccessLayer.Migrations
 
                     b.HasKey("StaffId");
 
-                    b.ToTable("Staffs");
+                    b.ToTable("Staffs", null, t =>
+                        {
+                            t.HasTrigger("StaffDecrease");
+
+                            t.HasTrigger("StaffIncrease");
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Subscribe", b =>

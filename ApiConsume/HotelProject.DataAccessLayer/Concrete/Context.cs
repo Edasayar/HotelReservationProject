@@ -12,9 +12,43 @@ namespace HotelProject.DataAccessLayer.Concrete
 {
     public class Context:IdentityDbContext<AppUser, AppRole, int>
     {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Room>(entry =>
+            {
+                entry.ToTable("Rooms", tb => tb.HasTrigger("RoomDecrease"));
+            });
+
+            builder.Entity<Room>(entry =>
+            {
+                entry.ToTable("Rooms", tb => tb.HasTrigger("RoomIncrease"));
+            });
+
+            builder.Entity<Staff>(entry =>
+            {
+                entry.ToTable("Staffs", tb => tb.HasTrigger("StaffIncrease"));
+            });
+
+            builder.Entity<Staff>(entry =>
+            {
+                entry.ToTable("Staffs", tb => tb.HasTrigger("StaffDecrease"));
+            });
+
+            builder.Entity<Guest>(entry =>
+            {
+                entry.ToTable("Guests", tb => tb.HasTrigger("GuestDecrease"));
+            });
+
+            builder.Entity<Guest>(entry =>
+            {
+                entry.ToTable("Guests", tb => tb.HasTrigger("GuestIncrease"));
+            });
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=Eda\\MSSQLSERVER01;initial catalog=HotelDb; integrated security=true; TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Server=Eda\\MSSQLSERVER01;initial catalog=HotelDbCopy; integrated security=true; TrustServerCertificate=true;");
         }
 
         public DbSet<Room> Rooms { get; set; }

@@ -1,0 +1,39 @@
+﻿@model List<GuestListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.City</td>
+            <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Guest/DeleteGuest/@item.GuestId">Sil</a> <a class="dropdown-item" href="/Guest/UpdateGuest/@item.GuestId">Güncelle</a>
+
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+    }
+
+</table>
+<a href="/Guest/AddGuest/" class="btn mb-1 btn-rounded btn-outline-warning">Yeni Müşteri Ekle </a>
+
