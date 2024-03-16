@@ -34,6 +34,9 @@ builder.Services.AddScoped<IContactDal, EfContactDal>();
 builder.Services.AddScoped<IGuestService, GuestService>();
 builder.Services.AddScoped<IGuestDal, EfGuestDal>();
 
+builder.Services.AddScoped<ISendMessageService, SendMessageService>();
+builder.Services.AddScoped<ISendMessageDal, EfSendMessageDal>();
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddCors(opt=>
