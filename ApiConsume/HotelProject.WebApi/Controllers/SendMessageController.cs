@@ -1,4 +1,5 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
+using HotelProject.BusinessLayer.Concrete;
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,12 @@ namespace HotelProject.WebApi.Controllers
         {
             var values = _sendMessageService.TGetById(Id);
             return Ok(values);
+        }
+
+        [HttpGet("GetSendMessageCount")]
+        public IActionResult GetSendMessageCount()
+        {
+            return Ok(_sendMessageService.TGetSendMessageCount());
         }
     }
 }

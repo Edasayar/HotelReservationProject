@@ -8,8 +8,8 @@
     <tr>
         <th>#</th>
         <th>Hizmet Başlığı</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <th>İşlem</th>
+        
        
     </tr>
     @foreach (var item in Model)
@@ -17,8 +17,17 @@
         <tr>
             <td>@item.ServiceId</td>
             <td>@item.Title</td>
-            <td><a href="/Service/DeleteService/@item.ServiceId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
-            <td><a href="/Service/UpdateService/@item.ServiceId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+
+            <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Service/DeleteService/@item.ServiceId">Sil</a> <a class="dropdown-item" href="/Service/UpdateService/@item.ServiceId">Güncelle</a>
+                      
+
+                    </div>
+                </div>
+            </td>
            
         </tr>
     }

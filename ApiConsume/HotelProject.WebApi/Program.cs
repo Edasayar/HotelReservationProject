@@ -37,6 +37,16 @@ builder.Services.AddScoped<IGuestDal, EfGuestDal>();
 builder.Services.AddScoped<ISendMessageService, SendMessageService>();
 builder.Services.AddScoped<ISendMessageDal, EfSendMessageDal>();
 
+builder.Services.AddScoped<IMessageCategoryService, MessageCategoryService>();
+builder.Services.AddScoped<IMessageCategoryDal, EfMessageCategoryDal>();
+
+builder.Services.AddScoped<IWorkLocationService, WorkLocationService>();
+builder.Services.AddScoped<IWorkLocationDal, EfWorkLocationDal>();
+
+builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddCors(opt=>
@@ -48,8 +58,11 @@ builder.Services.AddCors(opt=>
 });
 
 
+// api tarafýnda AppUser consume edilirken iliþkili tablolardan dolayý json formatýna dönüþtürülemediði için bunu uyguladýk verilerin gelmesini saðladýk
+builder.Services.AddControllers().AddNewtonsoftJson(opt=> 
+opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

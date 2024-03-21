@@ -13,19 +13,27 @@
         <th>Referans Görsel</th>
         <th>Referans Adı</th>
         <th>Referans Ünvanı</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <th>İşlem</th>
+        
         
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.TestimonialId</td>
+            <td>@item.Image</td>
             <td>@item.Name</td>
             <td>@item.Title</td>
-            <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
-            <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
-            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-primary">Detay</a></td>
+            <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Testimonial/DeleteTestimonial/@item.TestimonialId">Sil</a> <a class="dropdown-item" href="/Testimonial/UpdateTestimonial/@item.TestimonialId">Güncelle</a>
+                        <a class="dropdown-item" href="#">Detay</a>
+
+                    </div>
+                </div>
+            </td>
         </tr>
     }
 
