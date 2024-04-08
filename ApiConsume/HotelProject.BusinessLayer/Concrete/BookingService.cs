@@ -18,19 +18,33 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookingDal = bookingDal;
         }
 
-        public void TBookingStatusChangeApproved(Booking booking)
+      
+
+       
+
+        public void TBookingStatusChangeApproved(int Id)
         {
-            _bookingDal.BookingStatusChangeApproved(booking);
+            _bookingDal.BookingStatusChangeApproved(Id);
         }
 
-        public void TBookingStatusChangeApproved2(int Id)
+        public void TBookingStatusChangeCancel(int Id)
         {
-            _bookingDal.BookingStatusChangeApproved2(Id);
+            _bookingDal.BookingStatusChangeCancel(Id);
+        }
+
+        public void TBookingStatusChangeWait(int Id)
+        {
+            _bookingDal.BookingStatusChangeWait(Id);
         }
 
         public void TDelete(Booking t)
         {
             _bookingDal.Delete(t);
+        }
+
+        public int TGetBookingCount()
+        {
+           return _bookingDal.GetBookingCount();
         }
 
         public Booking TGetById(int id)
@@ -46,6 +60,11 @@ namespace HotelProject.BusinessLayer.Concrete
         public void TInsert(Booking t)
         {
             _bookingDal.Insert(t);
+        }
+
+        public List<Booking> TLast6BookingsList()
+        {
+            return _bookingDal.Last6BookingsList();
         }
 
         public void TUpdate(Booking t)

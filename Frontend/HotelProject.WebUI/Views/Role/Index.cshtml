@@ -1,0 +1,38 @@
+﻿@model List<HotelProject.EntityLayer.Concrete.AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h1>Rol Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rol Adı</th>
+        <th>İşlem</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+      
+        <tr>
+           
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+
+            <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Role/DeleteRole/@item.Id">Sil</a> <a class="dropdown-item" href="/Role/UpdateRole/@item.Id">Güncelle</a>
+
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+    }
+
+</table>
+<a href="/Role/AddRole/" class="btn mb-1 btn-rounded btn-outline-warning">Yeni Role Ekle </a>
