@@ -67,9 +67,9 @@ namespace HotelProject.BusinessLayer.Concrete
             return _bookingDal.GetList();
         }
 
-        public List<Booking> TGetPendingBookings()
+        public List<Booking> TGetWaitBookings()
         {
-            return _bookingDal.GetPendingBookings();
+            return _bookingDal.GetWaitBookings();
         }
 
         public void TInsert(Booking t)

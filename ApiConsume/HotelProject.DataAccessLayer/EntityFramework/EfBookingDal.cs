@@ -64,7 +64,7 @@ namespace HotelProject.DataAccessLayer.EntityFramework
             return context.Bookings.Where(b => b.Status == "İptal Edildi").ToList();
         }
 
-        public List<Booking> GetPendingBookings()
+        public List<Booking> GetWaitBookings()
         {
             var context = new Context();
             return context.Bookings.Where(b => b.Status == "Müşteri Aranacak").ToList();

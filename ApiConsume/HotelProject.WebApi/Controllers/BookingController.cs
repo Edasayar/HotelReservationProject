@@ -90,10 +90,10 @@ namespace HotelProject.WebApi.Controllers
             return Ok(values);
         }
 
-        [HttpGet("BookingPendingList")]
-        public IActionResult BookingPendingList()
+        [HttpGet("BookingWaitList")]
+        public IActionResult BookingWaitList()
         {
-            var values = _bookingService.TGetPendingBookings();
+            var values = _bookingService.TGetWaitBookings();
             return Ok(values);
         }
 

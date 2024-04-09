@@ -75,7 +75,7 @@ namespace HotelProject.WebUI.Controllers
 
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ApprovedReservations");
 
             }
             return View();
@@ -91,7 +91,7 @@ namespace HotelProject.WebUI.Controllers
 
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("CanceledReservations");
 
             }
             return View();
@@ -107,7 +107,7 @@ namespace HotelProject.WebUI.Controllers
 
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("WaitReservations");
 
             }
             return View();
@@ -129,10 +129,10 @@ namespace HotelProject.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> PendingReservations()
+        public async Task<IActionResult> WaitReservations()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:5027/api/Booking/BookingPendingList");
+            var responseMessage = await client.GetAsync("http://localhost:5027/api/Booking/BookingWaitList");
 
             if (responseMessage.IsSuccessStatusCode)
             {
