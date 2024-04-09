@@ -45,11 +45,29 @@ namespace HotelProject.DataAccessLayer.EntityFramework
             context.SaveChanges();
         }
 
+        public List<Booking> GetApprovedBookings()
+        {
+            var context = new Context();
+            return context.Bookings.Where(b => b.Status == "Onaylandı").ToList();
+        }
+
         public int GetBookingCount()
         {
             var context = new Context();
             var value = context.Bookings.Count();
             return value;
+        }
+
+        public List<Booking> GetCancelledBookings()
+        {
+            var context = new Context();
+            return context.Bookings.Where(b => b.Status == "İptal Edildi").ToList();
+        }
+
+        public List<Booking> GetPendingBookings()
+        {
+            var context = new Context();
+            return context.Bookings.Where(b => b.Status == "Müşteri Aranacak").ToList();
         }
 
         public List<Booking> Last6BookingsList()

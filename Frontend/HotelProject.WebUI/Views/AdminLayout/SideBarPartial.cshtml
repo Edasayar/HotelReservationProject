@@ -13,11 +13,16 @@
 
                 </a>
             </li>
+           
             <li>
-                <a href="/BookingAdmin/Index" aria-expanded="false">
-                    <i class="icon-calender menu-icon"></i><span class="nav-text">Rezervasyonlar</span>
-
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-calender menu-icon"></i> <span class="nav-text">Rezervasyonlar</span>
                 </a>
+                <ul aria-expanded="false">
+                    <li><a href="/BookingAdmin/ApprovedReservations">Onaylanan Rezervasyonlar</a></li>
+                    <li><a href="/BookingAdmin/PendingReservations">Bekleyen Rezervasyonlar</a></li>
+                    <li><a href="/BookingAdmin/CanceledReservations">İptal Edilen Rezervasyonlar</a></li>
+                </ul>
             </li>
             <li>
                 <a href="/Staff/Index" aria-expanded="false">

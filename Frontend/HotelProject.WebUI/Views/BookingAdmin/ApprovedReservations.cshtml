@@ -1,0 +1,51 @@
+﻿@model List<ListBookingDto>
+@{
+    ViewData["Title"] = "ApprovedReservations";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Onaylanan Rezervasyonlar</h2>
+<br/>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Misafir</th>
+                <th>Giriş Tarihi</th>
+                <th>Çıkış Tarihi</th>
+                <th>Durum</th>
+                <th>İşlem</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th>@count</th>
+                    <td>@item.Name</td>
+                    <td>@(((DateTime)item.CheckIn).ToString("dd-MM-yyyy"))</td>
+                    <td>@(((DateTime)item.CheckOut).ToString("dd-MM-yyyy"))</td>
+                    <td>
+                        <span class="badge badge-primary px-2">@item.Status</span>
+                    </td>
+
+                    <td>
+                        <div class="btn-group mb-1">
+                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/BookingAdmin/CancelReservation/@item.BookingId">İptal Et</a> <a class="dropdown-item" href="/BookingAdmin/ApprovedReservation/@item.BookingId">Onayla</a> <a class="dropdown-item" href="/BookingAdmin/WaitReservation/@item.BookingId">Beklet</a> <a class="dropdown-item" href="/BookingAdmin/UpdateBooking/@item.BookingId">Detay</a><a class="dropdown-item" href="/BookingAdmin/UpdateBooking/@item.BookingId">Güncelle</a>
+
+                            </div>
+                        </div>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

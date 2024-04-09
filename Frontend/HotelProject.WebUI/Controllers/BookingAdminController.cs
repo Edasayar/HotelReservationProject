@@ -112,5 +112,49 @@ namespace HotelProject.WebUI.Controllers
             }
             return View();
         }
+
+
+
+        public async Task<IActionResult> ApprovedReservations()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:5027/api/Booking/BookingApprovedList");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var approvedBookings = JsonConvert.DeserializeObject<List<ListBookingDto>>(jsonData);
+                return View(approvedBookings);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> PendingReservations()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:5027/api/Booking/BookingPendingList");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var approvedBookings = JsonConvert.DeserializeObject<List<ListBookingDto>>(jsonData);
+                return View(approvedBookings);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> CanceledReservations()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:5027/api/Booking/BookingCanceledList");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var approvedBookings = JsonConvert.DeserializeObject<List<ListBookingDto>>(jsonData);
+                return View(approvedBookings);
+            }
+            return View();
+        }
     }
 }

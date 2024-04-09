@@ -82,5 +82,26 @@ namespace HotelProject.WebApi.Controllers
             _bookingService.TBookingStatusChangeWait(Id);
             return Ok();
         }
+
+        [HttpGet("BookingApprovedList")]
+        public IActionResult BookingApprovedList()
+        {
+            var values = _bookingService.TGetApprovedBookings();
+            return Ok(values);
+        }
+
+        [HttpGet("BookingPendingList")]
+        public IActionResult BookingPendingList()
+        {
+            var values = _bookingService.TGetPendingBookings();
+            return Ok(values);
+        }
+
+        [HttpGet("BookingCanceledList")]
+        public IActionResult BookingCanceledList()
+        {
+            var values = _bookingService.TGetCancelledBookings();
+            return Ok(values);
+        }
     }
 }

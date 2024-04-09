@@ -42,6 +42,11 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookingDal.Delete(t);
         }
 
+        public List<Booking> TGetApprovedBookings()
+        {
+            return _bookingDal.GetApprovedBookings();   
+        }
+
         public int TGetBookingCount()
         {
            return _bookingDal.GetBookingCount();
@@ -52,9 +57,19 @@ namespace HotelProject.BusinessLayer.Concrete
             return _bookingDal.GetById(id);
         }
 
+        public List<Booking> TGetCancelledBookings()
+        {
+            return _bookingDal.GetCancelledBookings();
+        }
+
         public List<Booking> TGetList()
         {
             return _bookingDal.GetList();
+        }
+
+        public List<Booking> TGetPendingBookings()
+        {
+            return _bookingDal.GetPendingBookings();
         }
 
         public void TInsert(Booking t)
